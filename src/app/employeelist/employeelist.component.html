@@ -1,0 +1,101 @@
+
+<h1>Employee List</h1>
+<!-- <div *ngFor="let items of employee"> -->
+  
+
+<!-- <div class="card" style="width: 18rem;"> -->
+    <!-- <img class="card-img-top" [src]="items.employeePhoto"  alt="card image cap"> -->
+    <!-- <div class="card-body">
+      <h5 class="card-title" > Name:{{items.id}}</h5>
+      <h5 class="card-title" > Name:{{items.name}}</h5>
+      <h5 class="card-title" > UserName:{{items.username}}</h5>
+      <p> Address{{items.address.street}}</p>
+      
+
+      <h5 class="card-title">Gender:{{items.gender}}</h5>
+      <h5 class="card-title">Email:{{items.email}}</h5> -->
+      <!-- <h5 class="card-title">Phone Number:{{items.phoneNumber}}</h5>
+      <h5 class="card-title">DOB{{items.dateOfBirth}}</h5>
+      <h5 class="card-title">Department{{items.department}}</h5>
+      <h5 class="card-title">Acitve{{items.isActive}}</h5> -->
+     
+    <!-- </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row end-xs mt-1">
+    <div class="col-xs-12">
+    <input
+    [(ngModel)]="filterText"
+    (keyup)="filterData()" type="text"  class="searchbox" placeholder="Search here.. anjali please">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+  </div>
+</div>
+</div>
+<div class="container">
+
+<div class="mat-elevation-z8">
+  
+<table mat-table matSort [dataSource]="dataSource" >
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container  matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="abc"> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Username Column -->
+  <ng-container matColumnDef="username">
+    <th mat-header-cell *matHeaderCellDef  mat-sort-header> UserName </th>
+    <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+  </ng-container>
+
+  <!-- email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <!-- phone number -->
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+  </ng-container>
+   <!-- edit coloumn -->
+   <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef> </th>
+    <td mat-cell *matCellDef="let element"> rytr
+      <a routerLink="['/employeelists',element.id]">
+       
+      </a>
+       <mat-icon color="primary">edit</mat-icon>
+       
+      </td>
+      
+  </ng-container>
+  
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
+
+</div>
+
+</div>

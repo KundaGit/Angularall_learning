@@ -1,0 +1,6 @@
+<form #event="ngForm">
+<label for="Email">Email</label>
+<input type="text" #namefield="ngModel" [(ngModel)]="name"
+name="name">
+<button (click)="sendData($event,namefield.value)">Submit</button>
+</form>
